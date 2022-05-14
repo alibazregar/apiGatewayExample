@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const axios = require('axios')
-const port = 3001
+const PORT = 3001
+const HOST = 'http://localhost'
 
 app.use(express.json());
 
@@ -12,16 +13,16 @@ app.post("/bgapi",(req,res)=>{
   res.send("bibibibibib")
 })
 
-app.listen(port,async ()=>{
+app.listen(PORT,async ()=>{
   const response = await axios({
       method: "POST",
       url: "http://localhost:3000/register", 
       headers: {"content-type": "application/json"},
       data: {
         apiName : "registryTest",
-        host: "http://localhost:",
-        port:"3001",
-        url:"http://localhost:3001/"
+        host: HOST,
+        port:PORT,
+        url:HOST + ":" + PORT +"/"
       }
     })
     console.log(response.data)
